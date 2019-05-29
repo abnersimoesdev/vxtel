@@ -1,0 +1,23 @@
+{
+  "parser": "@typescript-eslint/parser",  
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsx": true,
+    "jsx": true,
+    "useJSXTextNode": true
+  },
+  "extends": "react-app",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-extra-parens": "error",
+    "@typescript-eslint/camelcase": "error",
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "quotes": ["error", "single"],
+    "linebreak-style": ["error", "unix"],
+    "function-paren-newline": "error",
+
+    "prettier/prettier": "error"
+  }
+}
