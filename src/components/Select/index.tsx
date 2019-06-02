@@ -8,19 +8,20 @@ interface OptionType {
 }
 
 interface OptionListType {
+  onChangeValue: Function
   options: Array<OptionType>
 }
 
-const Select = ({options}: OptionListType) => {
-  const {bind} = useSelect('')
+const Select = ({onChangeValue, options}: OptionListType) => {
+  const {bind} = useSelect(options[0].value, onChangeValue)
 
   return (
     <SelectStyled {...bind}>
-      {options.map((option: OptionType, index: number) => (
+      {options.map((option: OptionType, index: number) => 
         <option key={index} value={option.value}>
           {option.text}
         </option>
-      ))}
+      )}
     </SelectStyled>
   )
 }

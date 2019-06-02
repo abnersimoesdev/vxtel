@@ -3,14 +3,15 @@ import {useInput} from './hook'
 import {InputStyled} from './styles'
 
 interface InputText {
-  name: string
+  defaultValue?: string
   type?: string
+  onChangeValue: Function
 }
 
-const InputText = ({name, type = 'text'}: InputText) => {
-  const {bind} = useInput('')
+const InputText = ({defaultValue = '', type = 'text', onChangeValue}: InputText) => {
+  const {bind} = useInput(defaultValue, onChangeValue)
 
-  return <InputStyled name={name} type={type} {...bind} />
+  return <InputStyled type={type} {...bind} />
 }
 
 export default InputText
