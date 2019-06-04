@@ -8,15 +8,11 @@ import {
 import {AppStateType} from './types'
 
 export const initialState: AppStateType = {
-  standardPrice: [],
-  plansPrice: [],
-  locales: ['011', '016', '017', '018'],
-  plans: ['FaleMais 30', 'FaleMais 60', 'FaleMais 120'],
   filter: {
-    from: '',
-    to: '',
-    time: '',
-    plan: ''
+    from: '011',
+    to: '016',
+    time: '1',
+    plan: 'FaleMais 30'
   }
 }
 

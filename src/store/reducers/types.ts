@@ -6,9 +6,5 @@ export interface filterStateType {
 }
 
 export interface AppStateType {
-  standardPrice: string[]
-  plansPrice: string[]
-  locales: string[]
-  plans: string[]
   filter: filterStateType
 }
