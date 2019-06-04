@@ -1,8 +1,8 @@
-## Install
+# Install
 
 ### `yarn install` or `npm install`
 
-## Running 
+# Running 
 
 ### `yarn start` or `npm start`
 
