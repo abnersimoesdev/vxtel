@@ -1,45 +1,38 @@
 import React from 'react'
 import {useMappedState} from 'redux-react-hook'
-import Select from '../../components/Select'
-import InputText from '../../components/InputText'
 import {AppStateType} from '../../store/reducers/types'
-import {
-  changeFilterTime,
-  changeFilterFrom,
-  changeFilterTo,
-  changeFilterPlan
-} from '../../store/actions'
+import Filter from '../../components/Filter'
+import {parseSelect} from '../../components/Filter/helper'
 
 const Home = () => {
-  const mapFilterState = React.useCallback((state: AppStateType) => state.filter, [])
-  const mapLocalesState = React.useCallback((state: AppStateType) => state.locales, [])
-  const mapPlansState = React.useCallback((state: AppStateType) => state.plans, [])
-
-  const filter = useMappedState(mapFilterState)
-  const locales = useMappedState(mapLocalesState)
-  const plans = useMappedState(mapPlansState)
-
-  const from = locales.map((locale: string) => ({
-    text: locale,
-    value: locale
-  }))
-
-  const to = locales.map((locale: string) => ({
-    text: locale,
-    value: locale
-  }))
-
-  const plan = plans.map((plan: string) => ({
-    text: plan,
-    value: plan
-  }))
+  const mapState = React.useCallback(
+    (state: AppStateType) => ({
+      from: parseSelect(state.locales),
+      to: parseSelect(state.locales),
+      time: state.filter.time,
+      plans: parseSelect(state.plans),
+      standardPrice: state.standardPrice,
+      plansPrice: state.plansPrice
+    }),
+    []
+  )
+  const {from, to, time, plans, standardPrice, plansPrice} = useMappedState(mapState)
 
   return (
     <div>
-      <Select onChangeValue={changeFilterFrom} options={from} />
-      <Select onChangeValue={changeFilterTo} options={to} />
-      <InputText defaultValue={filter.time} onChangeValue={changeFilterTime} />
-      <Select onChangeValue={changeFilterPlan} options={plan} />
+      <Filter from={from} to={to} time={time} plans={plans} />
+
+      <ul>
+        {standardPrice.map((price: string, index: number) => (
+          <li key={index}>{price}</li>
+        ))}
+      </ul>
+
+      <ul>
+        {plansPrice.map((price: string, index: number) => (
+          <li key={index}>{price}</li>
+        ))}
+      </ul>
     </div>
   )
 }

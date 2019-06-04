@@ -1,8 +1,8 @@
 import React from 'react'
-import {useSelect} from './hook'
 import {SelectStyled} from './styles'
+import {useField} from '../Field/hook'
 
-interface OptionType {
+export interface OptionType {
   text: string
   value: string
 }
@@ -13,15 +13,15 @@ interface OptionListType {
 }
 
 const Select = ({onChangeValue, options}: OptionListType) => {
-  const {bind} = useSelect(options[0].value, onChangeValue)
+  const {bind} = useField(options[0].value, onChangeValue)
 
   return (
     <SelectStyled {...bind}>
-      {options.map((option: OptionType, index: number) => 
+      {options.map((option: OptionType, index: number) => (
         <option key={index} value={option.value}>
           {option.text}
         </option>
-      )}
+      ))}
     </SelectStyled>
   )
 }

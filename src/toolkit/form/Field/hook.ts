@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'redux-react-hook'
 
-type InputEvent = React.ChangeEvent<HTMLInputElement>
+type FieldEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
 
-export const useInput = (initialValue: string, onChangeValue: Function) => {
+export const useField = (initialValue: string, onChangeValue: Function) => {
   const [value, setValue] = useState(initialValue)
 
   const dispatch = useDispatch()
@@ -18,7 +18,7 @@ export const useInput = (initialValue: string, onChangeValue: Function) => {
     reset: () => setValue(initialValue),
     bind: {
       value,
-      onChange: (event: InputEvent) => {
+      onChange: (event: FieldEvent) => {
         const newValue = event.target.value
         setValue(newValue)
         onChange(newValue)
