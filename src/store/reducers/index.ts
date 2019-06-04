@@ -6,13 +6,15 @@ import {
   CHANGE_FILTER_PLAN
 } from '../actions/constants'
 import {AppStateType} from './types'
+import {planList} from '../../constants/plans'
+import {locales} from '../../constants/prices'
 
 export const initialState: AppStateType = {
   filter: {
-    from: '011',
-    to: '016',
+    from: locales[0],
+    to: locales[1],
     time: '1',
-    plan: 'FaleMais 30'
+    plan: planList[0]
   }
 }
 

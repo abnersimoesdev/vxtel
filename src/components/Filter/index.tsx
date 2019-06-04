@@ -1,6 +1,6 @@
 import React from 'react'
 import Field from '../../toolkit/form/Field'
-import Select, {OptionType} from '../../toolkit/form/Select'
+import Select from '../../toolkit/form/Select'
 import InputText from '../../toolkit/form/InputText'
 import {
   changeFilterTime,
@@ -9,22 +9,25 @@ import {
   changeFilterPlan
 } from '../../store/actions'
 import {FilterStyled} from './styles'
+import {locales} from '../../constants/prices'
+import {parseSelect} from '../../toolkit/form/helpers'
+import {planList} from '../../constants/plans'
 
 type FilterProps = {
-  from: OptionType[]
-  to: OptionType[]
+  from: string
+  to: string
   time: string
-  plans: OptionType[]
+  plan: string
 }
 
-const Filter = ({from, to, time, plans}: FilterProps) => (
+const Filter = ({from, to, time, plan}: FilterProps) => (
   <FilterStyled>
     <Field label="Origem:">
-      <Select onChangeValue={changeFilterFrom} options={from} />
+      <Select onChangeValue={changeFilterFrom} options={parseSelect(locales)} defaultValue={from} />
     </Field>
 
     <Field label="Destino:">
-      <Select onChangeValue={changeFilterTo} options={to} />
+      <Select onChangeValue={changeFilterTo} options={parseSelect(locales)} defaultValue={to} />
     </Field>
 
     <Field label="Tempo(min):">
@@ -32,7 +35,11 @@ const Filter = ({from, to, time, plans}: FilterProps) => (
     </Field>
 
     <Field label="Plano:">
-      <Select onChangeValue={changeFilterPlan} options={plans} />
+      <Select
+        onChangeValue={changeFilterPlan}
+        options={parseSelect(planList)}
+        defaultValue={plan}
+      />
     </Field>
   </FilterStyled>
 )

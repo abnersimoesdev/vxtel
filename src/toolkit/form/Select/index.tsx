@@ -8,12 +8,13 @@ export interface OptionType {
 }
 
 interface OptionListType {
-  onChangeValue: Function
+  defaultValue?: string
   options: Array<OptionType>
+  onChangeValue: Function
 }
 
-const Select = ({onChangeValue, options}: OptionListType) => {
-  const {bind} = useField(options[0].value, onChangeValue)
+const Select = ({defaultValue, options, onChangeValue}: OptionListType) => {
+  const {bind} = useField(defaultValue || options[0].value, onChangeValue)
 
   return (
     <SelectStyled {...bind}>
