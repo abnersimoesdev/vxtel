@@ -1,4 +1,4 @@
-## Instalation
+## Install
 
 ### `yarn install` or `npm install`
 
