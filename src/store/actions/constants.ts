@@ -1,0 +1,4 @@
+export const CHANGE_FILTER_FROM = 'FILTER: FROM'
+export const CHANGE_FILTER_TO = 'FILTER: TO'
+export const CHANGE_FILTER_TIME = 'FILTER: TIME'
+export const CHANGE_FILTER_PLAN = 'FILTER: PLAN'
