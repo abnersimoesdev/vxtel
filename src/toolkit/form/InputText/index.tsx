@@ -1,5 +1,4 @@
 import React from 'react'
-import {InputStyled} from './styles'
 import {useField} from '../Field/hook'
 
 interface InputText {
@@ -11,7 +10,7 @@ interface InputText {
 const InputText = ({defaultValue = '', type = 'text', onChangeValue}: InputText) => {
   const {bind} = useField(defaultValue, onChangeValue)
 
-  return <InputStyled type={type} {...bind} />
+  return <input type={type} {...bind} />
 }
 
 export default InputText

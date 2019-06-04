@@ -5,7 +5,8 @@ import {getCallPrice} from '../../utils/callPrice'
 import {getPriceWithPlan} from '../../utils/planPrice'
 import Filter from '../../components/Filter'
 import {HomeStyled} from './styles'
-import {convertRealCoin} from '../../utils/money'
+import PriceList from '../../components/PriceList'
+import Heading from '../../components/Heading'
 
 const Home = () => {
   const mapState = React.useCallback(
@@ -20,10 +21,9 @@ const Home = () => {
 
   return (
     <HomeStyled>
+      <Heading title="VxTel" subtitle="Fale Mais" />
       <Filter from={filter.from} to={filter.to} time={filter.time} plan={filter.plan} />
-
-      <span>{convertRealCoin(standardPrice)}</span>
-      <span>{convertRealCoin(planPrice)}</span>
+      <PriceList standard={standardPrice} plan={planPrice} />
     </HomeStyled>
   )
 }

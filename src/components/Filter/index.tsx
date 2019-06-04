@@ -30,7 +30,7 @@ const Filter = ({from, to, time, plan}: FilterProps) => (
       <Select onChangeValue={changeFilterTo} options={parseSelect(locales)} defaultValue={to} />
     </Field>
 
-    <Field label="Tempo(min):">
+    <Field label="Tempo (em minutos):">
       <InputText onChangeValue={changeFilterTime} defaultValue={time} />
     </Field>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {FieldStyled} from './styles'
+import {FieldStyled, LabelStyled} from './styles'
 
 type FieldType = {
   children: JSX.Element
@@ -10,7 +10,7 @@ const Field = ({children, label}: FieldType) => {
   return (
     <FieldStyled>
       <label>
-        <span>{label}</span>
+        <LabelStyled>{label}</LabelStyled>
         {children}
       </label>
     </FieldStyled>
